@@ -16,7 +16,6 @@ vim.keymap.set('n', '<Leader>x', ':!xdg-open %<CR><CR>')
 
 vim.keymap.set('n', 's', ':w<CR>')
 
-vim.keymap.set('n', '<C-j>', ':e #<CR>')
 
 
 local methods = require('user/methods')
