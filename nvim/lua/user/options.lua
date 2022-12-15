@@ -2,6 +2,8 @@ vim.opt.expandtab = true
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
+vim.opt.hlsearch = false
+
 
 vim.opt.smartindent = true
 
@@ -30,7 +32,7 @@ vim.opt.fillchars:append({ eob = ' ' }) -- remove the ~ from end of buffer
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 
-vim.opt.scrolloff = 8
+vim.opt.scrolloff = 4
 vim.opt.sidescrolloff = 8
 
 vim.opt.clipboard = 'unnamedplus' -- Use system clipboard
