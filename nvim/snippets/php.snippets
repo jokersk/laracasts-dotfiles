@@ -1,10 +1,10 @@
-snippet pubf "public method"
+snippet pub "public method"
 	public function ${1}(${2}): $3
 	{
 		${0}
 	}
 
-snippet prof "protected method"
+snippet pro "protected method"
 	protected function ${1}(${2}): $3
 	{
 		${0}
@@ -37,3 +37,13 @@ snippet con "create __construct"
 	public function __construct()
 	{
 	}
+
+snippet fn "create function"
+	function() {
+
+	}
+
+
+snippet ptest "create pest test function"
+	it('${1}', function() {
+	});
