@@ -31,7 +31,12 @@ use ({
   'folke/tokyonight.nvim',
   config = function()
     vim.cmd('colorscheme tokyonight')
-  end
+
+    vim.api.nvim_set_hl(0, 'StatusLineNonText', {
+        fg = vim.api.nvim_get_hl_by_name('NonText', true).foreground,
+        bg = vim.api.nvim_get_hl_by_name('StatusLine', true).background,
+    })
+  end,
 })
 
 -- Commenting support.
@@ -39,12 +44,6 @@ use('tpope/vim-commentary')
 
 -- Add, change, and delete surrounding text.
 use('tpope/vim-surround')
-
--- Useful commands like :Rename and :SudoWrite.
-use('tpope/vim-eunuch')
-
--- Pairs of handy bracket mappings, like [b and ]b.
-use('tpope/vim-unimpaired')
 
 -- Indent autodetection with editorconfig support.
 use('tpope/vim-sleuth')
@@ -55,9 +54,6 @@ use('tpope/vim-repeat')
 -- Add more languages.
 use('sheerun/vim-polyglot')
 
--- Navigate seamlessly between Vim windows and Tmux panes.
-use('christoomey/vim-tmux-navigator')
-
 -- Jump to the last location when opening a file.
 use('farmergreg/vim-lastplace')
 
@@ -66,12 +62,6 @@ use('nelstrom/vim-visual-star-search')
 
 -- Automatically create parent dirs when saving.
 use('jessarcher/vim-heritage')
-
--- Text objects for HTML attributes.
-use({
-  'whatyouhide/vim-textobj-xmlattr',
-  requires = 'kana/vim-textobj-user',
-})
 
 -- Automatically set the working directory to the project root.
 use({
@@ -180,26 +170,6 @@ use({
   end
 })
 
--- Git integration.
-use({
-  'lewis6991/gitsigns.nvim',
-  config = function()
-    require('gitsigns').setup()
-    vim.keymap.set('n', ']h', ':Gitsigns next_hunk<CR>')
-    vim.keymap.set('n', '[h', ':Gitsigns prev_hunk<CR>')
-    vim.keymap.set('n', 'gs', ':Gitsigns stage_hunk<CR>')
-    vim.keymap.set('n', 'gS', ':Gitsigns undo_stage_hunk<CR>')
-    vim.keymap.set('n', 'gp', ':Gitsigns preview_hunk<CR>')
-    vim.keymap.set('n', 'gb', ':Gitsigns blame_line<CR>')
-  end,
-})
-
--- Git commands.
-use({
-  'tpope/vim-fugitive',
-  requires = 'tpope/vim-rhubarb',
-})
-
 --- Floating terminal.
 use({
   'voldikss/vim-floaterm',
@@ -289,6 +259,25 @@ use({
     require('user/plugins/vim-test')
   end,
 })
+
+use({
+  'mattn/emmet-vim',
+  config = function()
+    vim.g.user_emmet_leader_key = '<C-,>'
+  end,
+})
+
+use {
+  "folke/trouble.nvim",
+  requires = "kyazdani42/nvim-web-devicons",
+  config = function()
+    require("trouble").setup {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    }
+  end
+}
 
 -- Automatically set up your configuration after cloning packer.nvim
 -- Put this at the end after all plugins
